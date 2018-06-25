@@ -17,7 +17,4 @@
 	}
 
 	$conn->close();
-//products 1,3,4
-//user 2,11,12
-
 ?>

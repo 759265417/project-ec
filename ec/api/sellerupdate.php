@@ -12,6 +12,7 @@
 	$img4 = upimg(5);
 	$img5 = upimg(6);
 	$color1 = $_POST['color1'];
+	$id = $_POST['id'];
 	$color2 = $_POST['color2'];
 	$color3 =$_POST['color3'];
 	$color4 = $_POST['color4'];
@@ -24,13 +25,12 @@
 		function upimg($i){
 		  if ($_FILES["img".$i]["error"] > 0)
 		    {
-		    	   echo '{"ret":false}';
+		    	   return "";
 
 		    }
 		  else
 		    {
 			   
-
 			    if (file_exists("../../upload/" . $_FILES["img".$i]["name"]))
 			      {
 			        return "/project/upload/" . $_FILES["img".$i]["name"];
@@ -43,12 +43,10 @@
 		    }
 
 		}
-	
-	//插入数据
-	$sql = "UPDATE `products`
-			(`name`,`price_before`,`price`,`title`,`imgnormal`,`brandimg`,`img1`,`img2`,`img3`,`img4`,`img5`,`color1`,`color2`,`color3`,`color4`,`mem32`,`mem64`,`mem128`,`mem256`)
-			SET
-			('$name','$price_before','$price_now','$tittle','$imgnormal','$brandimg','$img1','$img2','$img3','$img4','$img5','$color1','$color2','$color3','$color4','$mem32','$mem64','$mem128','$mem256')";
+
+
+	//xiugai数据
+	$sql = "update `products` set `name`='$name',`price_before`='$price_before',`price`='$price_now',`title`='$tittle',`imgnormal`='$imgnormal',`brandimg`='$brandimg',`img1`='$img1',`img2`='$img2',`img3`='$img3',`img4`='$img4',`img5`='$img5',`color1`='$color1',`color2`='$color2',`color3`='$color3',`color4`='$color4',`mem32`='$mem32',`mem64`='$mem64',`mem128`='$mem128',`mem256`='$mem256'where `id` = $id";
 if ($conn->query($sql) === TRUE) {
    echo '{"ret":true}';
 } else {

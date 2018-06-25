@@ -8,6 +8,7 @@
 <body>
 <div id="main" class="w">
     <form class="name fupload">
+        <input type="hidden" id="id" name="id">
         <div class="form">
             <div class="name l">手机品牌名：</div>
             <div class="label">
@@ -156,6 +157,7 @@
 <script type="text/javascript" src="../script/selleradd.js"></script>
 <script type="text/javascript">
     $id = GetQueryString("id");
+    $("#id").val($id);
     console.log($id);
 
     function GetQueryString(name) {
@@ -215,7 +217,7 @@
                 processData: false,
                 success: function (resp) {
                     console.log(resp.ret);
-                    if (resp) {
+                    if (resp=='{"ret":true}') {
                         //注册成功
                         alert('修改数据成功');
                         location = '/project/ec/src/html/indexM.html';

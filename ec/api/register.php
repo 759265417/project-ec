@@ -8,7 +8,7 @@
 	//md5加密算法
 	$password = md5($password);
 	//检测用户是否存在
-	$sql ="SELECT *FROM `users` WHERE `username`='$user'";
+	$sql ="SELECT * FROM `users` WHERE `username`='$user'";
 	// $ret = mysqli_query($conn,$sql);
 	$ret = $conn->query($sql);
 	header("content-type:text/json");
